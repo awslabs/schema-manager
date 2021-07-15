@@ -1,0 +1,36 @@
+applicationName: SchemaManager-Reporter
+applicationInstanceId: 1
+environment: dev
+
+repoClientClass: com.amazonaws.schemamanager.repo.BitBucketRepoClient
+registryClientClass: com.amazonaws.schemamanager.registry.SchemaRegistryClient
+reporterClass: com.amazonaws.schemamanager.reports.SchemaManagerReporterS3
+analyzerClass: com.amazonaws.schemamanager.analyze.SchemaAnalyzerImpl
+
+deploy: false
+
+repoClientProperties:
+   repoEndPoint: ssh://git@host/repo.git
+   baseInfo: main
+   pathPrefix:
+   credentials:
+   sshKeyFile: ~/.ssh/id_rsa
+   subjectNamePattern: .*
+   schemaNamePattern: .*
+
+localRepoClientProperties:
+   baseInfo:
+
+registryClientProperties:
+   registryEndPoint: http://127.0.0.1:8081
+
+analyzerProperties:
+   defaultCompatibility: FULL_TRANSITIVE
+   allowSchemaNameDuplicates: false
+
+reporterProperties:
+   region: us-east-2
+   bucketName: reportingBucket
+   prefixDir: reports/
+   filenamePattern: report-%s-%s.csv
+   useHeader: false
