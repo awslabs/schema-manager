@@ -1,0 +1,28 @@
+applicationName: SchemaManager 
+applicationInstanceId: 1
+environment: dev
+
+repoClientClass: com.amazonaws.schemamanager.repo.BitBucketRepoClient
+registryClientClass: Some
+reporterClass: NA
+analyzerClass: com.amazonaws.schemamanager.analyze.SchemaAnalyzerImpl
+
+repoClientProperties:
+   repoEndPoint: https://url.com
+   baseInfo: branches/dev
+   credentials: creds
+
+localRepoClientProperties:
+   baseInfo: ./
+
+registryClientProperties:
+   registryEndPoint: http://url.com:8081
+
+analyzerProperties:
+   defaultCompatibility: FULL_TRANSITIVE
+   allowSchemaNameDuplicates: false
+
+reporterProperties:
+   bucketName: reportingBucket
+   prefixDir: reports/
+   filenamePattern: report-{type}-{YYYYMMDDHHmmSS}.csv

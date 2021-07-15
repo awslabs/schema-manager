@@ -1,0 +1,34 @@
+applicationName: SchemaManager-Deploy
+applicationInstanceId: 1
+environment: dev
+
+repoClientClass: com.amazonaws.schemamanager.repo.BitBucketRepoClient
+registryClientClass: com.amazonaws.schemamanager.registry.SchemaRegistryClient
+reporterClass:
+analyzerClass: com.amazonaws.schemamanager.analyze.SchemaAnalyzerImpl
+
+deploy: true
+
+repoClientProperties:
+   repoEndPoint: ssh://git@host/repo.git
+   baseInfo: main
+   pathPrefix:
+   credentials:
+   sshKeyFile: ~/.ssh/id_rsa
+   subjectNamePattern: .*
+   schemaNamePattern: .*
+
+localRepoClientProperties:
+   baseInfo:
+
+registryClientProperties:
+   registryEndPoint: http://127.0.0.1:8081
+
+analyzerProperties:
+   defaultCompatibility: FULL_TRANSITIVE
+   allowSchemaNameDuplicates: false
+
+reporterProperties:
+   bucketName: reportingBucket
+   prefixDir: reports/
+   filenamePattern: report-%s-%s.csv
