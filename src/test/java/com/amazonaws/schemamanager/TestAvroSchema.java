@@ -17,10 +17,11 @@ import io.confluent.kafka.schemaregistry.avro.AvroSchema;
 import io.confluent.kafka.schemaregistry.client.rest.entities.SchemaReference;
 
 public class TestAvroSchema {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		List<String> refs = Arrays.asList(
 				//list of files to the schemas
-				""
+				"pathFile1",
+				"pathFile2"
 		);
 		
 		Map<String, String> rrs = new HashMap<>();
@@ -45,9 +46,6 @@ public class TestAvroSchema {
 				e.printStackTrace();
 			}
 		});
-		parsedSchemas.get("com.appdynamics.platform.ingestion.metrics.DistributionDto").isCompatible(
-				CompatibilityLevel.FULL_TRANSITIVE, 
-				Arrays.asList(parsedSchemas.get("com.appdynamics.platform.ingestion.metrics.DistributionDto").copy()));
 		Map<String, Schema> schemas = AvroSchemaSM.getTypes();
 
 		System.out.println(schemas);

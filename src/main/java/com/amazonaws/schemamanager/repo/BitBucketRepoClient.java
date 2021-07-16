@@ -128,45 +128,10 @@ public class BitBucketRepoClient extends FileSystemRepoClient {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	private static void testGit2() throws Exception {
-		SshSessionFactory sshSessionFactory = new JschConfigSessionFactory() {
-			@Override
-			protected void configure( Host host, Session session ) {
-			}
-		};
-
-		CloneCommand cloneRep = Git.cloneRepository();
-		cloneRep
-		.setDirectory(new File("/tmp/schemas-111"))
-		.setURI("ssh://git@bitbucket.corp.appdynamics.com:7999/saaseng/amak-cluster-configurations.git")
-//		.setRemote("remotes")
-		.setBranchesToClone(Arrays.asList("schemas-init"))
-		.setBranch("schemas-init")
-		.setCloneAllBranches(true)
-		.setTransportConfigCallback( new TransportConfigCallback() {
-			@Override
-			public void configure( Transport transport ) {
-				SshTransport sshTransport = ( SshTransport )transport;
-				sshTransport.setSshSessionFactory( sshSessionFactory );
-			}
-		} )
-		;
-
-		Git g = cloneRep.call();
-		g.getRepository().getRefDatabase().getRefs().forEach(r -> System.out.println(r.getName()));
-		g.remoteList().call().forEach(r -> {
-			r.getFetchRefSpecs().forEach(ref -> System.out.println(ref.toString()));
-		});
-		g.branchList().call().forEach(r -> System.out.println(r.getName()));
-		
-//		g.checkout().;
-	}
-
 
 	public static void main(String[] args) {
 		try {
-			testGit2();
+			//testGit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
