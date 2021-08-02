@@ -1,15 +1,10 @@
 # Schema Manager
 
 ## Overview
-The development cycle of schemas is much like an application. The need for versioning, quality checks, testing, and integration verification, are all advised before a schema should be rolled into Production.
 
-Schema Manager is a tool that fills the gap between a schema's development process and the running environment where a schema registry (SR) is deployed.
+Enterprises building event-driven systems or data buses using streaming technologies like Apache Kafka or Kinesis Data Streams, leverage schemas. Schemas (Apache Avro, Protobuf) define data payloads between these disparate systems/applications, ensuring that producers and consumers understand the data. Schema Registries store schemas and enforce compatibility between each schema version. Validating and deploying schemas to a schema registry is often decoupled from development of applications that use the schema. This leads to manual build and deploy processes of schemas between source repository and schema registry. 
+Schema Manager automates this synchronization. Schema Manager assists enterprises in validating and deploying schemas between Schema Registries and source control repositories.
 
-Schema Manager enables developers to develop and test their schemas without the burden of deploying a schema just to find out that the schema is incomplete.
-
-Schema Manager also allows development teams to connect their schema registry to their schema repositories and initiate verification for pull requests before a schema is deployed and the pull request is merged. Schema Manager also enables teams to publish the new schema after the pull request is approved by publishing the schema and reporting back through Schema Manager's reporting mechanism.
-
-All of the above actions of Schema Manager are logged and reported out to S3. The data can be consumed and visualized along with ingregrating to alerting frameworks. 
 
 ### Features
 
