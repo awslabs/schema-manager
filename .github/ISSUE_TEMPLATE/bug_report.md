@@ -32,6 +32,8 @@ If applicable, add logs to help explain your problem.
  - OS: [e.g. MacOS, Linux, Windows]
  - Version [e.g. 22]
  - Java Version
+ - Schema Registry Provider
+ - Schema Type [Avro, Protobuf, JSON]
 
 **Additional context**
 Add any other context about the problem here.
